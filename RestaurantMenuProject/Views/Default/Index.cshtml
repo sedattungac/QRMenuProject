@@ -1,0 +1,36 @@
+﻿@using EntityLayer.Concrete
+@model List<FoodCategory>
+@{
+
+    ViewData["Title"] = "Index";
+    Layout = "/Views/Shared/_TemplateLayout.cshtml";
+}
+<div class="home-carousel home-carousel-block">
+    <div class="swiper-container h-100">
+        <div class="swiper-wrapper">
+            @foreach (var item in Model)
+            {
+                <div class="swiper-slide">
+                    <div class="slider_item bg-overlay"
+                         style="background-image: url(@item.ImageUrl)">
+                        <div class="slider-details">
+                            <div class="divider">
+                                <span class="icon-star-full"></span>
+                                <span class="icon-star-full"></span>
+                                <span class="icon-star-full"></span>
+                            </div>
+                            <h1 class="slide_heading">@item.Title</h1>
+                            <a class="btn btn-default btn-primary btn-white" href="/Default/MenuDetail/@item.FoodCategoryId">Menü</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+    <div class="swiper-controller">
+        <!-- Add Scrollbar -->
+        <div class="swiper-scrollbar"></div>
+    </div>
+</div>
