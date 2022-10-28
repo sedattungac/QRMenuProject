@@ -16,6 +16,7 @@ namespace DataAccessLayer.Concrete
             //optionsBuilder.UseSqlServer("Data Source=77.245.159.136;Initial Catalog=veteriner;User ID=veteriner;Password=A.sd12345678987654321;persist security info=True");
         }
 
+        public DbSet<Application> Applications { get; set; }
         public DbSet<Food> Foods { get; set; }
         public DbSet<FoodCategory> FoodCategories { get; set; }
     }

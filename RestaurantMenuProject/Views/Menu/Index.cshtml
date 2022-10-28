@@ -1,0 +1,71 @@
+﻿@using EntityLayer.Concrete
+@model IEnumerable<EntityLayer.Concrete.FoodCategory>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="mb-2 mt-2">
+    <div class="float-left">
+        <h4>Menü Kategori Listesi</h4>
+
+    </div>
+    <div class="float-right">
+        <a href="/ProductCategory/Add" class="btn btn-warning btn-sm text-white"><i class="fas fa-plus "></i> Kategori Ekle</a>
+
+    </div>
+</div>
+<br />
+<hr />
+<div class="col-12 mt-2">
+    <div @*class="card card-primary"*@>
+        @*<div class="card-header">
+                <h4 class="card-title">Ürün Kategorileri</h4>
+            </div>*@
+        <div @*class="card-body"*@>
+            <div>
+
+                <div class="btn-group w-100 mb-2">
+                    <a class="btn btn-info active" href="javascript:void(0)" data-filter="all"> Tüm Kategoriler </a>
+                    @foreach (var item in Model)
+                    {
+                        <a class="btn btn-info" href="javascript:void(0)" data-filter="@item.FoodCategoryId"> @item.Title </a>
+                    }
+                </div>
+
+
+                <div class="mb-2">
+                    <a class="btn btn-secondary" href="javascript:void(0)" data-shuffle><i class="fas fa-random"></i> Karıştır </a>
+                    <div class="float-right">
+                        <select hidden class="custom-select" style="width: auto;" data-sortOrder>
+                            <option value="index"> Sort by Position </option>
+                            <option value="sortData"> Sort by Custom Data </option>
+                        </select>
+                        <div class="btn-group">
+                            <a class="btn btn-default" href="javascript:void(0)" data-sortAsc><i class="fas fa-sort-amount-up"></i> Artan </a>
+                            <a class="btn btn-default" href="javascript:void(0)" data-sortDesc><i class="fas fa-sort-amount-down"></i> Azalan </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="filter-container p-0 row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="filtr-item col-sm-2" data-category="@item.FoodCategoryId" data-sort="white sample">
+                            <a href="@item.ImageUrl" data-toggle="lightbox" data-title="@item.Title">
+                                <img src="@item.ImageUrl" class="img-fluid mb-2" alt="white sample" />
+                            </a>
+                            <p>@item.Title </p>
+                            <a href="/ProductCategory/Delete/@item.FoodCategoryId" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>Sil</a>
+                            <a href="/ProductCategory/Edit/@item.FoodCategoryId" class="btn btn-success btn-sm"><i class="fas fa-cog"></i> Düzenle</a>
+                            <a href="/ProductCategory/ProductCategoryDetail/@item.FoodCategoryId" class="btn btn-warning btn-sm text-white"><i class="fas fa-eye"></i> Detay</a>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
