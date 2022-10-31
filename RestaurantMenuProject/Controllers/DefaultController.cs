@@ -27,5 +27,10 @@ namespace RestaurantMenuProject.Controllers
                 Where(x => x.FoodCategoryId == id).Select(x => x.Title).FirstOrDefault();
             return View(value);
         }
+        [HttpGet]
+        public IActionResult Reservation()
+        {
+            return View();
+        }
     }
 }

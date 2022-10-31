@@ -10,7 +10,7 @@
 
     </div>
     <div class="float-right">
-        <a href="/ProductCategory/Add" class="btn btn-warning btn-sm text-white"><i class="fas fa-plus "></i> Kategori Ekle</a>
+        <a href="/Menu/Add" class="btn btn-warning btn-sm text-white"><i class="fas fa-plus "></i> Kategori Ekle</a>
 
     </div>
 </div>
@@ -48,22 +48,34 @@
                 </div>
             </div>
             <div>
-                <div class="filter-container p-0 row">
+                <div class="filter-container p-0 row ">
                     @foreach (var item in Model)
                     {
-                        <div class="filtr-item col-sm-2" data-category="@item.FoodCategoryId" data-sort="white sample">
+                        <div class="filtr-item col-sm-2 " data-category="@item.FoodCategoryId" data-sort="white sample">
                             <a href="@item.ImageUrl" data-toggle="lightbox" data-title="@item.Title">
-                                <img src="@item.ImageUrl" class="img-fluid mb-2" alt="white sample" />
+                                <img src="@item.ImageUrl" class="img-fluid" alt="white sample" />
                             </a>
                             <p>@item.Title </p>
-                            <a href="/ProductCategory/Delete/@item.FoodCategoryId" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>Sil</a>
-                            <a href="/ProductCategory/Edit/@item.FoodCategoryId" class="btn btn-success btn-sm"><i class="fas fa-cog"></i> Düzenle</a>
-                            <a href="/ProductCategory/ProductCategoryDetail/@item.FoodCategoryId" class="btn btn-warning btn-sm text-white"><i class="fas fa-eye"></i> Detay</a>
+                            <a href="/Menu/Delete/@item.FoodCategoryId" title="Sil" class="btn btn-danger mb-5"><i class="fas fa-trash"></i></a>
+                            <a href="/Menu/Edit/@item.FoodCategoryId" title="Düzenle" class="btn btn-primary mb-5"><i class="fas fa-cog"></i></a>
+                            @if (item.Status == true)
+                            {
+                                <a href="/Menu/Status/@item.FoodCategoryId" title="Aktif" class="btn btn-success mb-5"><i class="fas fa-eye"></i></a>
+                            }
+                            else
+                            {
+                                <a href="/Menu/Status/@item.FoodCategoryId" title="Pasif" class="btn btn-secondary mb-5"><i class="fas fa-eye-slash"></i></a>
+
+                            }
+                            <a href="/Menu/MenuDetail/@item.FoodCategoryId" title="Detay" class="btn btn-warning  text-white mb-5"><i class="fas fa-list"></i></a>
                         </div>
+                        <br /><br />
+                        <br /><br />
                     }
 
 
                 </div>
+               
             </div>
 
         </div>
